@@ -1,0 +1,23 @@
+#include <MeMegaPi.h>
+
+MeMegaPiDCMotor m1(PORT1A);
+MeMegaPiDCMotor m2(PORT1B);
+MeMegaPiDCMotor m3(PORT2A);
+MeMegaPiDCMotor m4(PORT2B);
+
+void setup() {
+  Serial1.begin(9600); // Bluetooth Serial
+}
+
+void loop() {
+  if (Serial1.available()) {
+    char cmd = Serial1.read();
+    switch (cmd) {
+      case 'F': m1.run(150); m2.run(-150); m3.run(150); m4.run(-150); break;
+      case 'B': m1.run(-150); m2.run(150); m3.run(-150); m4.run(150); break;
+      case 'L': m1.run(-150); m2.run(-150); m3.run(-150); m4.run(-150); break;
+      case 'R': m1.run(150); m2.run(150); m3.run(150); m4.run(150); break;
+      case 'S': m1.run(0); m2.run(0); m3.run(0); m4.run(0); break;
+    }
+  }
+}
