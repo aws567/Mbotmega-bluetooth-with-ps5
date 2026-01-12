@@ -1,49 +1,20 @@
-#include <MeMegaPi.h>
+This is how to make the Mbot Mega connect to a PS5 controller, but still connected to the computer
 
-// Define motors
-MeMegaPiDCMotor m1(PORT1A);
-MeMegaPiDCMotor m2(PORT1B);
-MeMegaPiDCMotor m3(PORT2A);
-MeMegaPiDCMotor m4(PORT2B);
-
-void setup() {
-  Serial.begin(9600); // Listen to Python commands
-}
-
-void loop() {
-  if (Serial.available()) {
-    char cmd = Serial.read();
-    switch (cmd) {
-      case 'F': // Forward
-        m1.run(150);
-        m2.run(-150);
-        m3.run(150);
-        m4.run(-150);
-        break;
-      case 'B': // Backward
-        m1.run(-150);
-        m2.run(150);
-        m3.run(-150);
-        m4.run(150);
-        break;
-      case 'L': // Turn left
-        m1.run(-150);
-        m2.run(-150);
-        m3.run(-150);
-        m4.run(-150);
-        break;
-      case 'R': // Turn right
-        m1.run(150);
-        m2.run(150);
-        m3.run(150);
-        m4.run(150);
-        break;
-      case 'S': // Stop
-        m1.run(0);
-        m2.run(0);
-        m3.run(0);
-        m4.run(0);
-        break;
-    }
-  }
-}
+Connect your PS5 controller to your pc by pressing the PlayStation button and the action button until it starts to blink, then connect it to Bluetooth
+Then go to python.org and download Python 3.x
+When the download screen pops up,p go to the bottom and press add to path, then press install now
+Now go to https://www.arduino.cc/en/software/ and scroll down until you see legacy IDE 1.8.19 and download it
+Now download my file, which is named "Arduino file."
+Now go to GitHub, write makeblock libay, and download the first one
+Go back to Arduino IDE, go to sketch, and then to add.zip libary navigate to the file you just downloaded the library, and double-click on it.
+Now go to comand line and type python --version. If it says 3.x or any number after you did everything correctly
+Now type pip install pyserial inputs to download the library 10, and type pip install pygame
+Now go and make a file in Documents and name it Mbot_ps5
+Now, go to Notepad and copy and paste it
+Save it as the notepad and name it Mbot_bluetooth.py, write .py or it will not work.
+Go back to Arduino IDE and upload it to the MBOT Mega
+It does not work. Go to tools and put the board as mega 2560 and the processor atmega 2560 16 .and check the notepad where it says Arduino = serial.Serial('COM4', 9600) change the (COM 4 ) to whatever you have on in toold in ardrino ide
+Now go to comand line after uploading the Arduino code and type cd C:\Users\kinga\OneDrive\Documents\megapiconroller by doing Ctrl Shift V
+If it was succsesull it should look like this: C:\Users\you name\OneDrive\Documents\Mbot_ps5>
+Then type python Mbot_bluetooth.py to start
+Now you can control you mbot mega with you ps5 controller
